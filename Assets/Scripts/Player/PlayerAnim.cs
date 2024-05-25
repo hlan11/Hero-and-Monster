@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnim : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator anim;
+    public Animator anim;
     [SerializeField] private GameObject playerFoot;
     bool isGrounded = true;
     bool isJumping;
@@ -13,7 +13,7 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private AudioSource attackSound;
     [Header("Player Ghost Trail")]
     [SerializeField] private GameObject GhostTrailPlayer;
-    void Awake()
+    void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

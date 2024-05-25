@@ -10,6 +10,10 @@ public class GrapeController : EnemyController
     [SerializeField] private float rateOfSpawn;
     [SerializeField] private Transform bulletSpawn;
     private float _rate = 0;
+    protected override void Start()
+    {
+        base.Start();
+    }
     private void Update()
     {
         bool isAttacking = CheckPlayer();

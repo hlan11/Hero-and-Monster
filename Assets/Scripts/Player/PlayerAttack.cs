@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,10 +23,12 @@ public class PlayerAttack : MonoBehaviour
     [Header("Mouse Controller")]
     [SerializeField] private float clickTime = 0f;
     private float lastClickThreshHold = 1.2f;
-    [SerializeField] private Animator anim;
-    
-    void Awake()
+   // [SerializeField] private Animator anim;
+    public OnHitFX _onHitFX;
+    public PlayerAnim _anim;
+    private void Start()
     {
+        _anim=GetComponent<PlayerAnim>();
         currentHealth = maxHealth;
         currentMana = maxMana;
     }
@@ -38,10 +41,14 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemy"))
         {
+            _anim.anim.SetTrigger("getHurt");
+            _onHitFX.StartCoroutine("FlashFX");
             currentHealth -= 10;
         }
         if (collision.collider.CompareTag("Bullet"))
         {
+            _anim.anim.SetTrigger("getHurt");
+            _onHitFX.StartCoroutine("FlashFX");
             Debug.Log("-------------------touch bullet-------------------");
             currentHealth -= 5;
         }
@@ -51,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
         var enemy = CheckEnemy();
         if (CheckEnemy())
         {
+            _onHitFX.StartCoroutine("FlashFX");
             Debug.Log("Hit enemy , - "+attackDamage);
             DealDamageToEnemy(enemy, attackDamage);
             //enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
@@ -80,7 +88,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            anim.SetTrigger("Die");
+            _anim.anim.SetTrigger("Die");
             Invoke("destroyPlayer", timeDestroy);
         }
     }

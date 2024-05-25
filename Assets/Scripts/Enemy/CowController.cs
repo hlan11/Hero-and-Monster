@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class CowController : EnemyController
 {
+    protected override void Start()
+    {
+        base.Start();
+    }
     protected override void AutoMove()
     {
         base.AutoMove();

@@ -27,8 +27,10 @@ public class EnemyController : MonoBehaviour
     [Header("Spawn Coin")]
     [SerializeField] protected GameObject coin;
     [SerializeField] protected Transform coinSpawn;
-    protected virtual void Awake()
+    public OnHitFX _onhitFX;
+    protected virtual void Start()
     {
+        _onhitFX=GetComponent<OnHitFX>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         healthBar.value = currentHealth;

@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Animator anim;
     private bool FacingRight = true;
     [SerializeField] private Transform playerFoot;
-    private void Awake()
+    private void Start()
     {
         rb=GetComponent<Rigidbody2D>();
         anim=GetComponent<Animator>();

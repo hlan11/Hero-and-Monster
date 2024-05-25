@@ -248,6 +248,7 @@ MonoBehaviour:
   colorCircle: {r: 0.69803923, g: 0.4156863, b: 0.86274517, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1851193094}
+  _onhitFX: {fileID: 0}
   grapeBullet: {fileID: 3012626374655905815, guid: ea96e88f95b75a842964a12e82d44f1f, type: 3}
   damage: 5
   speedBullet: 100
@@ -621,6 +622,7 @@ MonoBehaviour:
   colorCircle: {r: 0.29803923, g: 0.23529413, b: 0.14901961, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 403053652}
+  _onhitFX: {fileID: 0}
 --- !u!1 &168998809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1271,7 @@ MonoBehaviour:
   colorCircle: {r: 0.37254903, g: 0.5254902, b: 0.10980393, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1754980683}
+  _onhitFX: {fileID: 0}
   damage: 5
 --- !u!95 &538575732
 Animator:
@@ -2326,6 +2329,7 @@ MonoBehaviour:
   colorCircle: {r: 0.29411766, g: 0.20784315, b: 0.1764706, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1093739952}
+  _onhitFX: {fileID: 0}
 --- !u!1 &860164504
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,6 +4053,7 @@ MonoBehaviour:
   colorCircle: {r: 0.33333334, g: 0.47450984, b: 0.10980393, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 255027576}
+  _onhitFX: {fileID: 0}
   damage: 5
 --- !u!95 &1374627728
 Animator:
@@ -4501,6 +4506,7 @@ GameObject:
   - component: {fileID: 1465582400}
   - component: {fileID: 1465582399}
   - component: {fileID: 1465582397}
+  - component: {fileID: 1465582406}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4572,7 +4578,8 @@ MonoBehaviour:
   myEnemy: {fileID: 0}
   swordDamage: 0
   clickTime: 0
-  anim: {fileID: 1465582397}
+  _onHitFX: {fileID: 1465582406}
+  _anim: {fileID: 0}
 --- !u!114 &1465582401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4733,6 +4740,20 @@ Transform:
   - {fileID: 1765557585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1465582406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465582396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872d4d77cbe475d4c85591ec9710fed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitMaterial: {fileID: 2100000, guid: 86f74486d7bdab545b59c153537accef, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1507602590
 GameObject:
   m_ObjectHideFlags: 0
