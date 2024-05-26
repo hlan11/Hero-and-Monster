@@ -19,7 +19,6 @@ public class PlayerMove : MonoBehaviour
     {
         rb=GetComponent<Rigidbody2D>();
         anim=GetComponent<Animator>();
-       
     }
     private void simpleMove()
     {
