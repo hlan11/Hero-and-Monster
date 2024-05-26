@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 25524637}
   - component: {fileID: 25524636}
   - component: {fileID: 25524635}
+  - component: {fileID: 25524641}
   m_Layer: 3
   m_Name: Grape
   m_TagString: Enemy
@@ -234,6 +235,7 @@ MonoBehaviour:
   rb: {fileID: 25524637}
   anim: {fileID: 25524636}
   enemyDamage: 10
+  moveSpeed: 4
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -242,14 +244,14 @@ MonoBehaviour:
   flipRight: 26
   flipLeft: 17
   timeMove: 3
-  moveSpeed: 4
   healthBar: {fileID: 981995592}
+  maxHealth: 0
   currentHealth: 100
   colorCircle: {r: 0.69803923, g: 0.4156863, b: 0.86274517, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1851193094}
-  _onhitFX: {fileID: 0}
-  grapeBullet: {fileID: 3012626374655905815, guid: ea96e88f95b75a842964a12e82d44f1f, type: 3}
+  _onhitFX: {fileID: 25524641}
+  grapeBullet: {fileID: 7184041134534162245, guid: ea96e88f95b75a842964a12e82d44f1f, type: 3}
   damage: 5
   speedBullet: 100
   rateOfSpawn: 2
@@ -418,6 +420,20 @@ Transform:
   - {fileID: 1851193094}
   m_Father: {fileID: 860164505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &25524641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25524634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872d4d77cbe475d4c85591ec9710fed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitMaterial: {fileID: 2100000, guid: 86f74486d7bdab545b59c153537accef, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &43533578
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +624,7 @@ MonoBehaviour:
   rb: {fileID: 140185194}
   anim: {fileID: 140185198}
   enemyDamage: 5
+  moveSpeed: 4
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -616,8 +633,8 @@ MonoBehaviour:
   flipRight: 19
   flipLeft: 7
   timeMove: 5
-  moveSpeed: 4
   healthBar: {fileID: 219979693}
+  maxHealth: 0
   currentHealth: 100
   colorCircle: {r: 0.29803923, g: 0.23529413, b: 0.14901961, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
@@ -682,17 +699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeShake: 3
---- !u!114 &190007727 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4647175447921902825, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
-  m_PrefabInstance: {fileID: 1149678481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &219979693 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4647175447921902825, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
@@ -1179,7 +1185,7 @@ Camera:
   far clip plane: 999.85
   field of view: 60
   orthographic: 1
-  orthographic size: 14.5
+  orthographic size: 14.95
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1204,7 +1210,7 @@ Transform:
   m_GameObject: {fileID: 447628572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.2, y: 6, z: -10}
+  m_LocalPosition: {x: 5.7, y: 6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1235,6 +1241,7 @@ GameObject:
   - component: {fileID: 538575733}
   - component: {fileID: 538575732}
   - component: {fileID: 538575731}
+  - component: {fileID: 538575737}
   m_Layer: 3
   m_Name: Goblin
   m_TagString: Enemy
@@ -1257,6 +1264,7 @@ MonoBehaviour:
   rb: {fileID: 538575733}
   anim: {fileID: 538575732}
   enemyDamage: 10
+  moveSpeed: 4
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1265,13 +1273,13 @@ MonoBehaviour:
   flipRight: 5
   flipLeft: -1
   timeMove: 2.5
-  moveSpeed: 4
   healthBar: {fileID: 2102254964}
+  maxHealth: 0
   currentHealth: 50
   colorCircle: {r: 0.37254903, g: 0.5254902, b: 0.10980393, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1754980683}
-  _onhitFX: {fileID: 0}
+  _onhitFX: {fileID: 538575737}
   damage: 5
 --- !u!95 &538575732
 Animator:
@@ -1436,6 +1444,20 @@ Transform:
   - {fileID: 1754980683}
   m_Father: {fileID: 860164505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538575737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538575730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872d4d77cbe475d4c85591ec9710fed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitMaterial: {fileID: 2100000, guid: 86f74486d7bdab545b59c153537accef, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &543663198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2290,46 +2312,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.38, y: 4.45}
   m_EdgeRadius: 0
---- !u!95 &821734257 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6975720394448396962, guid: ae146497589310a4cbee788292c9ee53, type: 3}
-  m_PrefabInstance: {fileID: 886567800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &821734258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499048073028903002, guid: ae146497589310a4cbee788292c9ee53, type: 3}
   m_PrefabInstance: {fileID: 886567800}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &821734260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821734252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4dfa3501a56f7b4db2fdbf64488e2e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 821734253}
-  anim: {fileID: 821734257}
-  enemyDamage: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  playerAttackRange: {fileID: 1273324279}
-  playerAttackRadius: 2.87
-  flipRight: 52
-  flipLeft: 33
-  timeMove: 8
-  moveSpeed: 5
-  healthBar: {fileID: 190007727}
-  currentHealth: 100
-  colorCircle: {r: 0.29411766, g: 0.20784315, b: 0.1764706, a: 1}
-  coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
-  coinSpawn: {fileID: 1093739952}
-  _onhitFX: {fileID: 0}
 --- !u!1 &860164504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,9 +2800,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7592724057502700422, guid: ae146497589310a4cbee788292c9ee53, type: 3}
       insertIndex: -1
       addedObject: {fileID: 821734253}
-    - targetCorrespondingSourceObject: {fileID: 7592724057502700422, guid: ae146497589310a4cbee788292c9ee53, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 821734260}
   m_SourcePrefab: {fileID: 100100000, guid: ae146497589310a4cbee788292c9ee53, type: 3}
 --- !u!1 &918537015
 GameObject:
@@ -3999,6 +3983,7 @@ GameObject:
   - component: {fileID: 1374627729}
   - component: {fileID: 1374627728}
   - component: {fileID: 1374627727}
+  - component: {fileID: 1374627732}
   m_Layer: 3
   m_Name: Goblin (1)
   m_TagString: Enemy
@@ -4039,6 +4024,7 @@ MonoBehaviour:
   rb: {fileID: 1374627729}
   anim: {fileID: 1374627728}
   enemyDamage: 0
+  moveSpeed: 4
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -4047,13 +4033,13 @@ MonoBehaviour:
   flipRight: 40
   flipLeft: 23
   timeMove: 6
-  moveSpeed: 4
   healthBar: {fileID: 495319463}
+  maxHealth: 0
   currentHealth: 50
   colorCircle: {r: 0.33333334, g: 0.47450984, b: 0.10980393, a: 1}
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 255027576}
-  _onhitFX: {fileID: 0}
+  _onhitFX: {fileID: 1374627732}
   damage: 5
 --- !u!95 &1374627728
 Animator:
@@ -4200,6 +4186,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1374627732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374627725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872d4d77cbe475d4c85591ec9710fed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitMaterial: {fileID: 2100000, guid: 86f74486d7bdab545b59c153537accef, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1387573883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4579,7 +4579,7 @@ MonoBehaviour:
   swordDamage: 0
   clickTime: 0
   _onHitFX: {fileID: 1465582406}
-  _anim: {fileID: 0}
+  _anim: {fileID: 1465582399}
 --- !u!114 &1465582401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6015,7 +6015,7 @@ GameObject:
   - component: {fileID: 1827872251}
   m_Layer: 0
   m_Name: Enviroment
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

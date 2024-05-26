@@ -25,8 +25,9 @@ public class CowController : EnemyController
         base.autoMoveB();
         anim.SetTrigger("Walking");
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Invoke("AutoMove", 3f);
     }
 }

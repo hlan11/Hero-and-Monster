@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-//using UnityEngine.UIElements;
 using DG.Tweening;
 using UnityEngine.UI;
 
@@ -11,28 +10,35 @@ public class EnemyController : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
     [SerializeField] private float enemyDamage;
+    [SerializeField]protected float moveSpeed;
     [Header("Player Attack")]
     public LayerMask playerLayer;
     [SerializeField] protected Transform playerAttackRange;
     [SerializeField] protected float playerAttackRadius;
+    [Header("Enemy Move")]
     [SerializeField] protected float flipRight;
     [SerializeField] protected float flipLeft;
     [SerializeField] protected float timeMove;
     protected bool isFacingRight=true;
-    [Header("Health")]
-    [SerializeField]protected float moveSpeed;
+    [Header("Enemy Health")]
     [SerializeField] protected Slider healthBar;
+    [SerializeField] protected int maxHealth=100;
     [SerializeField] protected int currentHealth;
     [SerializeField] protected Color colorCircle;
     [Header("Spawn Coin")]
     [SerializeField] protected GameObject coin;
     [SerializeField] protected Transform coinSpawn;
+    [Header("FlashFX")]
     public OnHitFX _onhitFX;
     protected virtual void Start()
     {
         _onhitFX=GetComponent<OnHitFX>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        maxHealth = currentHealth;
+    }
+    protected virtual void Update()
+    {
         healthBar.value = currentHealth;
     }
     protected virtual void OnDrawGizmos()
@@ -91,20 +97,21 @@ public class EnemyController : MonoBehaviour
     }
     protected virtual void Died()
     {
-        if (currentHealth <= 0)
+        if (gameObject==null)
+        {
+          DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
-            Instantiate(coin,transform.position,transform.rotation);
         }
     }
     public virtual void TakeDamage(int damage)
     {
-        currentHealth -= (int)enemyDamage;
-        healthBar.value = currentHealth;
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
             Died();
-            //Instantiate(coin, transform.position, transform.rotation);
         }
     }
 }

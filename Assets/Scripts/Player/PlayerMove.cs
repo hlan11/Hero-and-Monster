@@ -13,6 +13,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Animator anim;
     private bool FacingRight = true;
     [SerializeField] private Transform playerFoot;
+    bool isOnGround;
+    bool isJumping;
     private void Start()
     {
         rb=GetComponent<Rigidbody2D>();
@@ -25,20 +27,40 @@ public class PlayerMove : MonoBehaviour
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.W))
+        isOnGround = false;
+        isJumping = true;
+        if(Input.GetKeyDown(KeyCode.W))
+        rb.AddForce(new Vector2(0, 2) * JumpForce, ForceMode2D.Impulse);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
         {
-            rb.velocity=new Vector2(rb.velocity.x,JumpForce*multiplier);
-            anim.SetBool("isJumping", true);
+            Debug.Log("-------Player On Ground-------");
+            isOnGround = true;
         }
-        else
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
         {
-            anim.SetBool("isJumping", false);
+            Debug.Log("==========Player Jumping==========");
+            isJumping = false;
+        }
+        
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
+        {
+            Debug.Log("_________isOnGround = false_______________");
+            isOnGround = false;
         }
     }
     private void Update()
     {
-        simpleMove();
         Jump();
+        simpleMove();
         CheckFlipA();
         CheckFlipB();
     }

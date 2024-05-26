@@ -7,8 +7,6 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public Animator anim;
     [SerializeField] private GameObject playerFoot;
-    bool isGrounded = true;
-    bool isJumping;
     [Header("Player Sound")]
     [SerializeField] private AudioSource attackSound;
     [Header("Player Ghost Trail")]
@@ -18,23 +16,11 @@ public class PlayerAnim : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
-    private void OnCollisionEnter2D(Collision2D playerFoot)
-    {
-        if (playerFoot.collider.CompareTag("Ground")) 
-        {
-            
-            isGrounded = true;
-        }
-        else
-        {
-            
-            isGrounded= false;
-        }
-    }
     private void Update()
     {
         CheckAnimation();
     }
+    
     void CheckAnimation()
     {
         bool isMoving = rb.velocity.x != 0;

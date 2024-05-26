@@ -14,18 +14,19 @@ public class GrapeController : EnemyController
     {
         base.Start();
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         bool isAttacking = CheckPlayer();
         if (CheckPlayer())
         {
+            rb.velocity = Vector2.zero;
             anim.SetBool("isAttacking",true);
             Shoot(CheckPlayer());
         }
         else
         {
             anim.SetBool("isAttacking", false);
-            rb.velocity = new Vector2(moveSpeed, 0);
         }
     }
     private void Shoot(Collider2D player)

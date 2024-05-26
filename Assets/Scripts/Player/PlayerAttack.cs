@@ -53,15 +53,20 @@ public class PlayerAttack : MonoBehaviour
             currentHealth -= 5;
         }
     }
+    void UseMana()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            currentMana -= 5;
+        }
+    }
     void Attack()
     {
-        var enemy = CheckEnemy();
-        if (CheckEnemy())
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(enemyAttackRange.position, enemyAttackRadius, enemyLayer);
+        foreach(Collider2D myEnemy in hitEnemies)
         {
-            _onHitFX.StartCoroutine("FlashFX");
-            Debug.Log("Hit enemy , - "+attackDamage);
-            DealDamageToEnemy(enemy, attackDamage);
-            //enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
+            myEnemy.GetComponent<EnemyController>().TakeDamage(2);
+            Debug.Log("hit "+ myEnemy.name);
         }
     }
     private void DealDamageToEnemy(Collider2D enemy, int enemyDamage)
@@ -73,16 +78,17 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(enemyAttackRange.position, enemyAttackRadius);
     }
-    public Collider2D CheckEnemy()
-    {
-        return Physics2D.OverlapCircle(enemyAttackRange.position, enemyAttackRadius,enemyLayer);
-    }
+    //public Collider2D CheckEnemy()
+    //{
+    //    return Physics2D.OverlapCircle(enemyAttackRange.position, enemyAttackRadius,enemyLayer);
+    //}
    
     private void Update()
     {
         UpdateHealthAndMana();
         Died();
         Attack();
+        UseMana();
     }
     void Died()
     {
