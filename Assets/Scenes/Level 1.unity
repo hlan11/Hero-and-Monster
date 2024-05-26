@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 365144055}
   - component: {fileID: 365144054}
   - component: {fileID: 365144053}
+  - component: {fileID: 365144056}
   m_Layer: 5
   m_Name: YesButton
   m_TagString: Untagged
@@ -1020,7 +1021,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 365144054}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 365144056}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: PlayAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &365144054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,6 +1072,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365144051}
   m_CullTransparentMesh: 1
+--- !u!114 &365144056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365144051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cfa2e77630e124e8fb3d0095e46723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelPauseGame: {fileID: 0}
+  PanelLoseGame: {fileID: 1997666732}
 --- !u!1001 &400166197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3578,6 +3605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelPauseGame: {fileID: 1998815995}
+  PanelLoseGame: {fileID: 0}
 --- !u!1001 &1149678481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4761,6 +4789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelPauseGame: {fileID: 0}
+  PanelLoseGame: {fileID: 0}
 --- !u!1 &1389002093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4995,6 +5024,9 @@ MonoBehaviour:
   clickTime: 0
   _onHitFX: {fileID: 1465582406}
   _anim: {fileID: 1465582399}
+  playerDeath: {fileID: 6650199810314842004, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
+  panelLoseGame: {fileID: 1997666732}
+  timeSetPanel: 0.5
 --- !u!114 &1465582401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6216,6 +6248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelPauseGame: {fileID: 1998815995}
+  PanelLoseGame: {fileID: 0}
 --- !u!1001 &1713942262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7331,8 +7364,9 @@ GameObject:
   - component: {fileID: 2045367163}
   - component: {fileID: 2045367162}
   - component: {fileID: 2045367161}
+  - component: {fileID: 2045367164}
   m_Layer: 5
-  m_Name: YesButton (1)
+  m_Name: NoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7400,7 +7434,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2045367162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2045367164}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: exitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2045367162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7439,6 +7485,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045367159}
   m_CullTransparentMesh: 1
+--- !u!114 &2045367164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045367159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cfa2e77630e124e8fb3d0095e46723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelPauseGame: {fileID: 0}
+  PanelLoseGame: {fileID: 1997666732}
 --- !u!114 &2102254964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4647175447921902825, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
