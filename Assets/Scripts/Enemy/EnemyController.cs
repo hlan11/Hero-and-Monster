@@ -30,12 +30,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] protected Transform coinSpawn;
     [Header("FlashFX")]
     public OnHitFX _onhitFX;
+    [SerializeField] private ParticleSystem deathVFX;
     protected virtual void Start()
     {
         _onhitFX=GetComponent<OnHitFX>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         maxHealth = currentHealth;
+        deathVFX = GetComponent<ParticleSystem>();
     }
     protected virtual void Update()
     {
@@ -111,7 +113,8 @@ public class EnemyController : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Died();
+            Instantiate(deathVFX, transform.position, transform.rotation);
+            Invoke("Died", 2f);
         }
     }
 }

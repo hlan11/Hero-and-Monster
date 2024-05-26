@@ -9,6 +9,13 @@ public class ButtonController : MonoBehaviour
 {
     [SerializeField] private GameObject PanelPauseGame;
     private bool Pause;
+    [SerializeField] private GameObject PanelLoseGame;
+    public void PlayAgain()
+    {
+        PanelLoseGame.SetActive(false);
+        SceneManager.LoadScene("Level 1");
+    }
+
     public void PauseButton()
     {
         PanelPauseGame.SetActive(true);

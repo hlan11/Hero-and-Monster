@@ -26,6 +26,10 @@ public class PlayerAttack : MonoBehaviour
    // [SerializeField] private Animator anim;
     public OnHitFX _onHitFX;
     public PlayerAnim _anim;
+    [SerializeField] private ParticleSystem playerDeath;
+    [Header("Panel Lose Game")]
+    [SerializeField] private GameObject panelLoseGame;
+    [SerializeField] private float timeSetPanel;
     private void Start()
     {
         _anim=GetComponent<PlayerAnim>();
@@ -96,10 +100,18 @@ public class PlayerAttack : MonoBehaviour
         {
             _anim.anim.SetTrigger("Die");
             Invoke("destroyPlayer", timeDestroy);
+            
         }
+    }
+    void SetLosePanel()
+    {
+        Time.timeScale = 0;
+        panelLoseGame.SetActive(true);
     }
     void destroyPlayer()
     {
+        Instantiate(playerDeath,transform.position,Quaternion.identity);
         Destroy(gameObject);
+        Invoke("SetLosePanel", timeSetPanel);
     }
 }
