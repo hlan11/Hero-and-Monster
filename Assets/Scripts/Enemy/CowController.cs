@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 
-public class CowController : EnemyController
+public abstract class CowController : EnemyController
 {
     protected override void Start()
     {
@@ -27,7 +27,8 @@ public class CowController : EnemyController
     }
     protected override void Update()
     {
-        base.Update();
+       
         Invoke("AutoMove", 3f);
     }
+    public abstract override void TakeDamage(int damage);
 }

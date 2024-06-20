@@ -31,7 +31,11 @@ public class PlayerAnim : MonoBehaviour
         }
         bool isAttacking = Input.GetMouseButtonDown(0);
         anim.SetBool("isAttacking", isAttacking);
-        //attackSound.Play();
+        if(Input.GetMouseButtonDown(0))
+        {
+        attackSound.Play();
+        Debug.Log("Attack Sound Play");
+        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             anim.SetTrigger("isScrolling");

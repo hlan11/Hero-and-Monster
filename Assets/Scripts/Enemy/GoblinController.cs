@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinController : EnemyController
+public abstract class GoblinController : EnemyController
 {
-    [SerializeField] private int damage;
     protected override void Start()
     {
         base.Start();
@@ -28,4 +27,5 @@ public class GoblinController : EnemyController
             anim.SetBool("isAttacking", false);
         }
     }
+    public abstract override void TakeDamage(int damage);
 }

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapeController : EnemyController
+public abstract class GrapeController : EnemyController
 {
     [SerializeField] private GrapeBullet grapeBullet;
     [SerializeField] private int damage;
     [SerializeField] private float speedBullet;
     [SerializeField] private float rateOfSpawn;
     [SerializeField] private Transform bulletSpawn;
+    [SerializeField] private Collider2D player;
     private float _rate = 0;
     protected override void Start()
     {
@@ -17,16 +18,12 @@ public class GrapeController : EnemyController
     protected override void Update()
     {
         base.Update();
-        bool isAttacking = CheckPlayer();
         if (CheckPlayer())
         {
             rb.velocity = Vector2.zero;
+            player = CheckPlayer();
             anim.SetBool("isAttacking",true);
-            Shoot(CheckPlayer());
-        }
-        else
-        {
-            anim.SetBool("isAttacking", false);
+            Shoot(player);
         }
     }
     private void Shoot(Collider2D player)
@@ -44,4 +41,5 @@ public class GrapeController : EnemyController
         grapeBullet.Shoot(bulletForce, damage);
         _rate = rateOfSpawn;
     }
+    public abstract override void TakeDamage(int damage);
 }

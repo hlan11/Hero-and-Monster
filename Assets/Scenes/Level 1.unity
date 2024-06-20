@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 25524641}
   m_Layer: 3
   m_Name: Grape
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,26 +237,31 @@ MonoBehaviour:
   enemyDamage: 10
   moveSpeed: 4
   playerLayer:
-    serializedVersion: 2
     m_Bits: 64
   playerAttackRange: {fileID: 1428488765}
   playerAttackRadius: 1.15
   flipRight: 26
   flipLeft: 17
   timeMove: 3
+  isFacingRight: 1
   healthBar: {fileID: 981995592}
-  maxHealth: 0
-  currentHealth: 100
-  colorCircle: {r: 0.69803923, g: 0.4156863, b: 0.86274517, a: 1}
+  maxHealth: 100
+  currentHealth: 0
+  colorCircle:
+    r: 0.69803923
+    g: 0.4156863
+    b: 0.86274517
+    a: 1
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1851193094}
   _onhitFX: {fileID: 25524641}
-  deathVFX: {fileID: 6650199810314842004, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   grapeBullet: {fileID: 7184041134534162245, guid: ea96e88f95b75a842964a12e82d44f1f, type: 3}
   damage: 5
   speedBullet: 100
   rateOfSpawn: 2
   bulletSpawn: {fileID: 337568864}
+  player: {fileID: 0}
+  _rate: 0
 --- !u!95 &25524636
 Animator:
   serializedVersion: 5
@@ -410,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25524634}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.841106, y: 9.557294, z: -0.20869501}
   m_LocalScale: {x: 11, y: 11, z: 1}
   m_ConstrainProportionsScale: 0
@@ -627,21 +632,24 @@ MonoBehaviour:
   enemyDamage: 5
   moveSpeed: 4
   playerLayer:
-    serializedVersion: 2
     m_Bits: 64
   playerAttackRange: {fileID: 1389002094}
   playerAttackRadius: 2.33
   flipRight: 19
   flipLeft: 7
   timeMove: 5
+  isFacingRight: 1
   healthBar: {fileID: 219979693}
   maxHealth: 100
-  currentHealth: 100
-  colorCircle: {r: 0.29803923, g: 0.23529413, b: 0.14901961, a: 1}
+  currentHealth: 0
+  colorCircle:
+    r: 0.29803923
+    g: 0.23529413
+    b: 0.14901961
+    a: 1
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 403053652}
   _onhitFX: {fileID: 0}
-  deathVFX: {fileID: 6650199810314842004, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
 --- !u!1 &168998809
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +941,7 @@ Transform:
   m_GameObject: {fileID: 337568863}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.058, z: 0}
+  m_LocalPosition: {x: 0.117, y: -0.058, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1102,9 +1110,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415559680314956808, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Name
       value: Canvas (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.b
@@ -1117,6 +1133,10 @@ PrefabInstance:
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.r
       value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029680039010955969, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194247865281906368, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1149,6 +1169,14 @@ PrefabInstance:
     - target: {fileID: 6796935141659238938, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.241
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386250632839127779, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421707353042198916, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8924463760823547977, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Pivot.x
@@ -1404,7 +1432,7 @@ GameObject:
   - component: {fileID: 538575737}
   m_Layer: 3
   m_Name: Goblin
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1426,22 +1454,24 @@ MonoBehaviour:
   enemyDamage: 10
   moveSpeed: 4
   playerLayer:
-    serializedVersion: 2
     m_Bits: 64
   playerAttackRange: {fileID: 1269699338}
   playerAttackRadius: 1.61
   flipRight: 5
   flipLeft: -1
   timeMove: 2.5
+  isFacingRight: 1
   healthBar: {fileID: 2102254964}
-  maxHealth: 0
-  currentHealth: 50
-  colorCircle: {r: 0.37254903, g: 0.5254902, b: 0.10980393, a: 1}
+  maxHealth: 100
+  currentHealth: 0
+  colorCircle:
+    r: 0.37254903
+    g: 0.5254902
+    b: 0.10980393
+    a: 1
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 1754980683}
   _onhitFX: {fileID: 538575737}
-  deathVFX: {fileID: 6650199810314842004, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
-  damage: 5
 --- !u!95 &538575732
 Animator:
   serializedVersion: 5
@@ -2001,7 +2031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592724057502700422, guid: ae146497589310a4cbee788292c9ee53, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7756708237709688618, guid: ae146497589310a4cbee788292c9ee53, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2500,21 +2530,24 @@ MonoBehaviour:
   enemyDamage: 5
   moveSpeed: 4
   playerLayer:
-    serializedVersion: 2
     m_Bits: 64
   playerAttackRange: {fileID: 1273324279}
   playerAttackRadius: 2.24
   flipRight: 45
   flipLeft: 27
   timeMove: 8
+  isFacingRight: 1
   healthBar: {fileID: 190007727}
-  maxHealth: 0
-  currentHealth: 100
-  colorCircle: {r: 0.90943396, g: 0.20494287, b: 0, a: 1}
+  maxHealth: 100
+  currentHealth: 0
+  colorCircle:
+    r: 0.90943396
+    g: 0.20494287
+    b: 0
+    a: 1
   coin: {fileID: 0}
   coinSpawn: {fileID: 0}
   _onhitFX: {fileID: 0}
-  deathVFX: {fileID: 6650199810314842004, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
 --- !u!1 &860164504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,7 +2557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 860164505}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2933,7 +2966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592724057502700422, guid: ae146497589310a4cbee788292c9ee53, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7756708237709688618, guid: ae146497589310a4cbee788292c9ee53, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3622,21 +3655,33 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415559680314956808, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.b
-      value: 0.13725491
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.g
-      value: 0.25490198
+      value: 0.24622199
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.r
-      value: 0.29803923
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029680039010955969, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194247865281906368, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3665,6 +3710,14 @@ PrefabInstance:
     - target: {fileID: 6796935141659238938, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386250632839127779, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421707353042198916, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8924463760823547977, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Pivot.x
@@ -4428,7 +4481,7 @@ GameObject:
   - component: {fileID: 1374627732}
   m_Layer: 3
   m_Name: Goblin (1)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4468,22 +4521,24 @@ MonoBehaviour:
   enemyDamage: 0
   moveSpeed: 4
   playerLayer:
-    serializedVersion: 2
     m_Bits: 64
   playerAttackRange: {fileID: 1868463428}
   playerAttackRadius: 1.61
   flipRight: 40
   flipLeft: 23
   timeMove: 6
+  isFacingRight: 1
   healthBar: {fileID: 495319463}
-  maxHealth: 0
-  currentHealth: 50
-  colorCircle: {r: 0.33333334, g: 0.47450984, b: 0.10980393, a: 1}
+  maxHealth: 100
+  currentHealth: 0
+  colorCircle:
+    r: 0.33333334
+    g: 0.47450984
+    b: 0.10980393
+    a: 1
   coin: {fileID: 7183635029492073107, guid: 8fb9111acc6aa694599ed476e7a7bc21, type: 3}
   coinSpawn: {fileID: 255027576}
   _onhitFX: {fileID: 1374627732}
-  deathVFX: {fileID: 6650199810314842004, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
-  damage: 5
 --- !u!95 &1374627728
 Animator:
   serializedVersion: 5
@@ -4994,7 +5049,7 @@ MonoBehaviour:
   rb: {fileID: 1465582403}
   anim: {fileID: 1465582397}
   playerFoot: {fileID: 918537015}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 2036058003}
   GhostTrailPlayer: {fileID: 0}
 --- !u!114 &1465582400
 MonoBehaviour:
@@ -5012,7 +5067,6 @@ MonoBehaviour:
   maxMana: 100
   healthBar: {fileID: 2102675253}
   manaBar: {fileID: 106311173}
-  attackDamage: 5
   timeDestroy: 0.3
   enemyLayer:
     serializedVersion: 2
@@ -5020,7 +5074,6 @@ MonoBehaviour:
   enemyAttackRange: {fileID: 797407329}
   enemyAttackRadius: 2.62
   myEnemy: {fileID: 0}
-  swordDamage: 0
   clickTime: 0
   _onHitFX: {fileID: 1465582406}
   _anim: {fileID: 1465582399}
@@ -5185,6 +5238,7 @@ Transform:
   - {fileID: 797407329}
   - {fileID: 918537017}
   - {fileID: 1765557585}
+  - {fileID: 2036058004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1465582406
@@ -5726,21 +5780,33 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415559680314956808, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.b
-      value: 0.27058825
+      value: 0.0053612613
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.g
-      value: 0.31764707
+      value: 0.17326245
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.r
-      value: 0.45098042
+      value: 0.94716984
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029680039010955969, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194247865281906368, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5765,6 +5831,14 @@ PrefabInstance:
     - target: {fileID: 6796935141659238938, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.42196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386250632839127779, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421707353042198916, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8924463760823547977, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Pivot.x
@@ -6265,9 +6339,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415559680314956808, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Name
       value: Canvas (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.b
@@ -6280,6 +6362,10 @@ PrefabInstance:
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.r
       value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029680039010955969, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194247865281906368, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6312,6 +6398,14 @@ PrefabInstance:
     - target: {fileID: 6796935141659238938, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.241
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386250632839127779, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421707353042198916, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8924463760823547977, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Pivot.x
@@ -7275,6 +7369,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026861321}
   m_CullTransparentMesh: 1
+--- !u!1 &2036058002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036058004}
+  - component: {fileID: 2036058003}
+  m_Layer: 6
+  m_Name: AttackAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &2036058003
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036058002}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2036058004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036058002}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1465582405}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038529594
 GameObject:
   m_ObjectHideFlags: 0
@@ -7537,9 +7759,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415559680314956808, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Name
       value: Canvas (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575244540868612828, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.b
@@ -7552,6 +7782,10 @@ PrefabInstance:
     - target: {fileID: 1885768816274540255, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Color.r
       value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029680039010955969, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194247865281906368, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7584,6 +7818,14 @@ PrefabInstance:
     - target: {fileID: 6796935141659238938, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.241
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386250632839127779, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421707353042198916, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8924463760823547977, guid: 963494a0f80931448a88c730cfc18ffd, type: 3}
       propertyPath: m_Pivot.x

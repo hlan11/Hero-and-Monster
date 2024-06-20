@@ -6,8 +6,10 @@ public class GrapeBullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private ParticleSystem hitPlayer;
-    private BulletDamage bulletSetting;
+    [SerializeField]private BulletDamage bulletSetting;
     [SerializeField] private float duration;
+
+    
     private void Start()
     {
         rb=GetComponent<Rigidbody2D>();

@@ -4,40 +4,42 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.ComponentModel;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
     [SerializeField] private float enemyDamage;
-    [SerializeField]protected float moveSpeed;
+    [SerializeField] protected float moveSpeed;
     [Header("Player Attack")]
     public LayerMask playerLayer;
     [SerializeField] protected Transform playerAttackRange;
     [SerializeField] protected float playerAttackRadius;
+
     [Header("Enemy Move")]
     [SerializeField] protected float flipRight;
     [SerializeField] protected float flipLeft;
     [SerializeField] protected float timeMove;
-    protected bool isFacingRight=true;
+    protected bool isFacingRight = true;
     [Header("Enemy Health")]
     [SerializeField] protected Slider healthBar;
-    [SerializeField] protected int maxHealth=100;
-    [SerializeField] protected int currentHealth;
+    public int maxHealth { get; set; }
+    public int currentHealth { get;set; }
     [SerializeField] protected Color colorCircle;
     [Header("Spawn Coin")]
     [SerializeField] protected GameObject coin;
     [SerializeField] protected Transform coinSpawn;
     [Header("FlashFX")]
     public OnHitFX _onhitFX;
-    [SerializeField] private ParticleSystem deathVFX;
+    //[SerializeField] private ParticleSystem deathVFX;
     protected virtual void Start()
     {
-        _onhitFX=GetComponent<OnHitFX>();
+        _onhitFX = GetComponent<OnHitFX>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         maxHealth = currentHealth;
-        deathVFX = GetComponent<ParticleSystem>();
+        //deathVFX = GetComponent<ParticleSystem>();
     }
     protected virtual void Update()
     {
@@ -50,7 +52,7 @@ public class EnemyController : MonoBehaviour
     }
     protected virtual Collider2D CheckPlayer()
     {
-        return Physics2D.OverlapCircle(playerAttackRange.position, playerAttackRadius,playerLayer);
+        return Physics2D.OverlapCircle(playerAttackRange.position, playerAttackRadius, playerLayer);
     }
     protected virtual void AutoMove()
     {
@@ -62,20 +64,20 @@ public class EnemyController : MonoBehaviour
         {
             if (isFacingRight)
             {
-              Flip();
-              autoMoveA();
+                Flip();
+                autoMoveA();
             }
             else
             {
-              autoMoveA();
+                autoMoveA();
             }
         }
         if (collision.CompareTag("FlipPointA"))
         {
             if (!isFacingRight)
             {
-              Flip();
-              autoMoveB();
+                Flip();
+                autoMoveB();
             }
             else
             {
@@ -97,24 +99,6 @@ public class EnemyController : MonoBehaviour
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
     }
-    protected virtual void Died()
-    {
-        if (gameObject==null)
-        {
-          DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    public virtual void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            Instantiate(deathVFX, transform.position, transform.rotation);
-            Invoke("Died", 2f);
-        }
-    }
+
+    public abstract void TakeDamage(int damage);
 }
